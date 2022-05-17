@@ -1,7 +1,8 @@
 import React from "react";
 import { useAppDispatch } from "../hook";
 
-import {toggleComplete, removeTodo} from '../store/todoSlice';
+// import {toggleComplete, removeTodo} from '../store/todoSlice';
+import {deleteTodo, toggleStatus} from '../store/todoSlice';
 
 interface IProps {
     id: string;
@@ -17,10 +18,10 @@ const TodoItem: React.FC<IProps> = ({ id, title, completed }) => {
             <input
                 type='checkbox'
                 checked={completed}
-                onChange={() => dispatch(toggleComplete(id))}
+                onChange={() => dispatch(toggleStatus(id))}
             />
             <span>{title}</span>
-            <span onClick={() => dispatch(removeTodo(id))}>&times;</span>
+            <span onClick={() => dispatch(deleteTodo(id))}>&times;</span>
         </li>
     );
 }
